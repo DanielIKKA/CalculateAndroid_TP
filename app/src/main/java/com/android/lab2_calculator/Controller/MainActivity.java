@@ -1,5 +1,6 @@
 package com.android.lab2_calculator.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView relay;
     private Switch switchComponent;
     private EqualButton padEqual;
+    private Button buttonSwitchActivity;
 
     /**--------------------**
      ** PRIVATE ATTRIBUTES **
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         this.resultView = findViewById(R.id.resultView);
         this.relay = findViewById(R.id.relayOperation);
         this.switchComponent = findViewById(R.id.switchId);
-
         this.padEqual = new EqualButton(this);
+        this.buttonSwitchActivity = findViewById(R.id.button_history_search);
 
         /// add Listener
         this.operationView.addTextChangedListener(new TextWatcher() {
@@ -85,6 +87,19 @@ public class MainActivity extends AppCompatActivity {
                 handleClick(v);
             }
         });
+        buttonSwitchActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity_history_search();
+            }
+        });
+    }
+
+    public void openActivity_history_search(){
+        Intent intent = new Intent(this, HistorySearch.class);
+        //vérifier que l'activité  n'a pas déjà été lancée
+        intent.putExtra("operationsList",this.);
+        startActivity(intent);
     }
 
     /**-----------------**
