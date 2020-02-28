@@ -54,6 +54,8 @@ public class CalculateHandleThread extends HandlerThread {
 
                 receiveAndUpdateUI();
 
+                activity.get().addOperationResult(operation, result);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
