@@ -18,4 +18,6 @@
     <string name="pad_divide">/</string>
     <string name="option1">AsyncTask Method</string>
     <string name="option2">Thread / Handler</string>
+    <string name="search_bar_placeholder">Search</string>
+    <string name="go_btn">GO</string>
 </resources>

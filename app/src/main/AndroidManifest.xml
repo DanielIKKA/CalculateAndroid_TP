@@ -14,13 +14,13 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".Controller.MainActivity"
             tools:ignore="InnerclassSeparator">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".Controller.HistorySearch"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>
