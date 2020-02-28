@@ -1,6 +1,5 @@
-package com.android.lab2_calculator.Models;
+package com.android.lab2_calculator.Models.Server;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -9,7 +8,6 @@ import java.net.Socket;
 
 class MyCalculusRunnable implements Runnable {
     private Socket sock;
-    private BufferedReader input;
 
     MyCalculusRunnable(Socket s) {
         sock = s;

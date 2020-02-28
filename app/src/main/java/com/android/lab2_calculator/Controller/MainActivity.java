@@ -103,11 +103,9 @@ public class MainActivity extends AppCompatActivity {
 
             //use different async method
             if(!this.switchComponent.isChecked()) {
-                System.out.println("AsyncTask");
                 CalculateAsyncTask asyncTask= new CalculateAsyncTask(this);
                 asyncTask.execute(operation);
             } else {
-                System.out.println("handleThread");
                 CalculateHandleThread handleThread = new CalculateHandleThread("newThread", this);
                 handleThread.execute();
             }
