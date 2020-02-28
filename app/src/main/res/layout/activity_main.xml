@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Controller.MainActivity"
+    android:background="@color/colorPrimaryDark">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/expressionText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/resultView"
+        app:layout_constraintWidth_percent="0.6"
+
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+
+        android:textSize="60sp"
+        android:textColor="#FFFF"
+        android:gravity="center_vertical"
+        android:background="@color/colorPrimaryDark"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/relayOperation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/expressionText"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:textSize="20sp"
+        android:textColor="#B29E9E9E"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/resultView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/relayOperation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/expressionText"
+
+        android:textSize="60sp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:maxLines="1"
+        android:background="@color/colorPrimaryDark"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/expressionText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad1"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/expressionText"
+        app:layout_constraintStart_toEndOf="@id/pad1"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad2"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/expressionText"
+        app:layout_constraintStart_toEndOf="@id/pad2"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad3"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad_plus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/expressionText"
+        app:layout_constraintStart_toEndOf="@id/pad3"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad_plus"
+        android:textSize="50sp"
+        android:enabled="false"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad4"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad1"
+        app:layout_constraintStart_toEndOf="@id/pad1"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad5"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad1"
+        app:layout_constraintStart_toEndOf="@id/pad2"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad6"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad_minus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad_plus"
+        app:layout_constraintStart_toEndOf="@id/pad6"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad_minus"
+        android:textSize="50sp"
+        android:enabled="false"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad7"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad4"
+        app:layout_constraintStart_toEndOf="@id/pad1"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad8"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad4"
+        app:layout_constraintStart_toEndOf="@id/pad2"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad9"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad_mult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad_minus"
+        app:layout_constraintStart_toEndOf="@id/pad9"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad_mult"
+        android:textSize="50sp"
+        android:enabled="false"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad0"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintDimensionRatio="2:1"
+
+        android:text="@string/pad0"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad_coma"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad_mult"
+        app:layout_constraintStart_toEndOf="@id/pad0"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad_coma"
+        android:textSize="50sp"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pad_divide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/pad_mult"
+        app:layout_constraintStart_toEndOf="@id/pad_coma"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1"
+
+        android:text="@string/pad_divide"
+        android:textSize="50sp"
+        android:enabled="false"
+        android:onClick="handleClick"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/option1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/option1"
+        android:gravity="center_vertical|center"
+        android:textColor="#FFFF"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pad0"
+        app:layout_constraintBottom_toBottomOf="@id/switchId"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <Switch
+        android:id="@+id/switchId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:switchMinWidth="70dp"
+        android:gravity="center_vertical|center"
+
+        app:layout_constraintTop_toBottomOf="@id/pad0"
+        app:layout_constraintStart_toEndOf="@id/option1"
+        app:layout_constraintWidth_percent="0.2"
+        android:checked="false" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/option2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:text="@string/option2"
+        android:gravity="center_vertical|center"
+        android:textColor="#FFFF"
+
+        app:layout_constraintStart_toEndOf="@+id/switchId"
+        app:layout_constraintTop_toBottomOf="@id/pad0"
+        app:layout_constraintBottom_toBottomOf="@id/switchId"
+        app:layout_constraintWidth_percent="0.4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

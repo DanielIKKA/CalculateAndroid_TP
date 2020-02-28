@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lab2_Calculator</string>
+    <string name="pad1">1</string>
+    <string name="pad2">2</string>
+    <string name="pad3">3</string>
+    <string name="pad_plus">+</string>
+    <string name="pad_minus">-</string>
+    <string name="pad_coma">.</string>
+    <string name="pad0">0</string>
+    <string name="pad_mult">x</string>
+    <string name="pad9">9</string>
+    <string name="pad8">8</string>
+    <string name="pad7">7</string>
+    <string name="pad6">6</string>
+    <string name="pad5">5</string>
+    <string name="pad4">4</string>
+    <string name="pad_equal">=</string>
+    <string name="pad_divide">/</string>
+    <string name="option1">AsyncTask Method</string>
+    <string name="option2">Thread / Handler</string>
+</resources>
