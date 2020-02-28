@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.HistorySearchActivity"
+        <activity android:name=".Controller.HistorySearch"
             tools:ignore="InnerclassSeparator" />
     </application>
 

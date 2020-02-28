@@ -20,4 +20,5 @@
     <string name="option2">Thread / Handler</string>
     <string name="search_bar_placeholder">Search</string>
     <string name="go_btn">GO</string>
+    <string name="title_list">History</string>
 </resources>
