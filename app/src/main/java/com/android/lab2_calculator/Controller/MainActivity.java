@@ -1,5 +1,6 @@
 package com.android.lab2_calculator.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static int HISTORY_ACTIVITY_CODE = 100;
+
     /**-----------------**
      **      VIEWS      **
      **-----------------**/
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
      **--------------------**/
     private boolean writable = true;
     private boolean signEnable = false;
+    private ArrayList<String> operationList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +137,14 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    private Intent PrepareForSegue() {
+        Intent intent = new Intent(this, HistorySearchActivity.class);
+
+        intent.putExtra("operationsList", this.operationList);
+
+        return intent;
+    }
+
     /**-------------------------**
      ** PACKAGE-PRIVATE METHODS **
      **-------------------------**/
@@ -159,6 +171,22 @@ public class MainActivity extends AppCompatActivity {
         float nb2 = Float.parseFloat(operandList.get(1));
 
         return operation(nb1, nb2, operatorList.get(0));
+    }
+
+    public void addOperationResult(String op, double res) {
+        if (res != Double.POSITIVE_INFINITY) {
+            this.operationList.add(op + " = " + res);
+        } else {
+            this.operationList.add(op + " = err result");
+        }
+
+        displayList();
+    }
+
+    private void displayList() {
+        for (String op : this.operationList) {
+            System.out.println(op);
+        }
     }
 
     /**-------------------------**

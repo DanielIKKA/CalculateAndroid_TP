@@ -8,7 +8,7 @@ import com.android.lab2_calculator.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HistorySearch extends AppCompatActivity {
+public class HistorySearchActivity extends AppCompatActivity {
 
     private WebView webView;
 
