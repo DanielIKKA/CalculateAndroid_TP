@@ -310,5 +310,10 @@
         app:layout_constraintBottom_toBottomOf="@id/switchId"
         app:layout_constraintWidth_percent="0.4" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
