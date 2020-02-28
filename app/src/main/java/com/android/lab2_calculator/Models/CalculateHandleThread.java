@@ -6,7 +6,10 @@ import android.os.Looper;
 
 import com.android.lab2_calculator.Controller.MainActivity;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
+import java.net.Socket;
 
 public class CalculateHandleThread extends HandlerThread {
     /*
@@ -17,7 +20,6 @@ public class CalculateHandleThread extends HandlerThread {
     private String operation;
 
     private float result;
-
 
     //Creation of two Runnable
     //This one will'll change the UI of activity, WARMING this must execute in the MainThread
@@ -51,6 +53,23 @@ public class CalculateHandleThread extends HandlerThread {
         }
     }
 
+    private class SocketRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                Socket socket = new Socket("10.0.2.2", 9876);
+                System.out.println("Connected");
+                
+                PrintWriter pw = new PrintWriter(socket.getOutputStream());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
     /**-----------------**
      **   CONSTRUCTOR   **
      **-----------------**/
@@ -66,10 +85,10 @@ public class CalculateHandleThread extends HandlerThread {
         //We have to start the thread but this one can be started once, so we have to check
         if(!this.isAlive()) this.start();
 
-        calculateRunnable calRun = new calculateRunnable(operation);
-        calRun.run();
+        //calculateRunnable calRun = new calculateRunnable(operation);
+        SocketRunnable socketRunnable = new SocketRunnable();
 
         //This backgroundThread Thread need to run calculateRunnable
-        new Handler(this.getLooper()).post(calRun);
+        new Handler(this.getLooper()).post(socketRunnable);
     }
 }
