@@ -1,12 +1,15 @@
 package com.android.lab2_calculator.Models;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 class MyCalculusRunnable implements Runnable {
     private Socket sock;
+    private BufferedReader input;
 
     MyCalculusRunnable(Socket s) {
         sock = s;
@@ -14,21 +17,21 @@ class MyCalculusRunnable implements Runnable {
 
     @Override
     public void run() {
-
-
         try {
+
             DataInputStream dis = new DataInputStream(sock.getInputStream());
             DataOutputStream dos = new DataOutputStream(sock.getOutputStream());
 
-            System.out.println(dis);
-
             // read op1, op2 and the opreation to make
-            Double op1 = dis.readDouble();
+            double op1 = dis.readDouble();
             char op = dis.readChar();
-            Double op2 = dis.readDouble();
+            double op2 = dis.readDouble();
 
-            Double res = CalculusServer.doOp(op1, op2, op);
+            System.out.println("client: " + op1 + op + op2);
 
+            double res = CalculusServer.doOp(op1, op2, op);
+
+            System.out.println("server : " + res);
             // send back result
             dos.writeDouble(res);
 
@@ -37,19 +40,21 @@ class MyCalculusRunnable implements Runnable {
             sock.close();
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            try {
+                DataOutputStream dos = new DataOutputStream(sock.getOutputStream());
+                dos.writeDouble(Double.POSITIVE_INFINITY);
+                dos.close();
+                System.out.println("server send : positive infinity because there was an error");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-
     }
-
 }
 
 class CalculusServer {
 
-
-    public static double doOp(double op1, double op2, char op) throws Exception
-    {
+    static double doOp(double op1, double op2, char op) throws Exception {
         switch (op) {
 
             case '+':
@@ -58,7 +63,7 @@ class CalculusServer {
             case '-':
                 return op1 - op2;
 
-            case'*':
+            case'x':
                 return op1 * op2;
 
             case '/':
@@ -73,22 +78,16 @@ class CalculusServer {
 
     }
 
-
-
     public static void main(String[] args) throws Exception {
 
         // Example of a distant calculator
         ServerSocket ssock = new ServerSocket(9876);
 
-        while (true) { // infinite loop
+        while (!Thread.currentThread().isInterrupted()) { // infinite loop
             Socket comm = ssock.accept();
             System.out.println("connection established");
 
-
-
             new Thread(new MyCalculusRunnable(comm)).start();
         }
-
     }
-
 }

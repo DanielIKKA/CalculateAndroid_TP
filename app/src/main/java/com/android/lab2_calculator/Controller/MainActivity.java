@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 System.out.println("handleThread");
                 CalculateHandleThread handleThread = new CalculateHandleThread("newThread", this);
-                handleThread.execute(operation);
+                handleThread.execute();
             }
         }
     }
