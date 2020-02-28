@@ -37,7 +37,7 @@
         android:textSize="20sp"
         android:text="@string/go_btn" />
 
-    <ListView
+    <ScrollView
         android:id="@+id/list_View"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -47,7 +47,15 @@
 
         android:background="@color/colorPrimaryDark"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"/>
+        android:paddingEnd="20dp">
+
+        <LinearLayout
+            android:id="@+id/message_List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+    </ScrollView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title_list"

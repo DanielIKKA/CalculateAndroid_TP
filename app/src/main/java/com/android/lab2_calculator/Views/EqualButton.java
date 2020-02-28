@@ -42,9 +42,9 @@ public class EqualButton extends AppCompatButton {
 
         //layout constrains
         set.connect(this.getId(), ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
-        set.connect(this.getId(), ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
         set.connect(this.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
-        set.setDimensionRatio(this.getId(), "4:1");
+        set.setDimensionRatio(this.getId(), "2:1");
+        set.constrainPercentWidth(this.getId(), (float) 0.5);
         set.applyTo(layout);
     }
 
