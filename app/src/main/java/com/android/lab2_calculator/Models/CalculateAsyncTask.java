@@ -37,7 +37,7 @@ public class CalculateAsyncTask extends AsyncTask<String, Void, Float> {
     @Override
     protected void onPostExecute(Float result) {
         super.onPostExecute(result);
-
+        activity.get().addOperationResult(operation, result);
         activity.get().getResultView().setText(String.valueOf(result));
         activity.get().getRelay().setText(this.operation);
 
