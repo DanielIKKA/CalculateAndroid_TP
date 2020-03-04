@@ -1,8 +1,13 @@
 package com.android.lab2_calculator.Controller;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +22,7 @@ public class HistorySearch extends AppCompatActivity {
     private ArrayList<String> operations;
     private WebView webView;
     private LinearLayout messageList;
+    private EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +30,35 @@ public class HistorySearch extends AppCompatActivity {
         setContentView(R.layout.history_search);
 
         webView = findViewById(R.id.webView);
+        messageList = findViewById(R.id.message_List);
+        searchBar = findViewById(R.id.search_bar);
+
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://google.com");
-        messageList = findViewById(R.id.message_List);
 
+        Button btn = findViewById(R.id.returnBtn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(prepareForSegue());
+            }
+        });
+
+        Button goBtn = findViewById(R.id.search_go_btn);
+        goBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl(searchBar.getText().toString());
+            }
+        });
+    }
+
+    private Intent prepareForSegue() {
+        Intent intent = new Intent(this, MainActivity.class);
+
+        intent.putExtra("operationsList", this.operations);
+
+        return intent;
     }
 
     @Override
@@ -45,8 +76,10 @@ public class HistorySearch extends AppCompatActivity {
             operation = "empty operation";
         }
         TextView tv = new TextView(this);
-        tv.setTextColor(255);
-        tv.setPadding(2,5, 2, 2);
+        tv.setText(operation);
+        tv.setTextSize(20);
+        tv.setTextColor(Color.WHITE);
+        tv.setPadding(0,10, 0, 10);
         return tv;
     }
 

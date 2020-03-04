@@ -21,4 +21,6 @@
     <string name="search_bar_placeholder">Search</string>
     <string name="go_btn">GO</string>
     <string name="title_list">History</string>
+    <string name="backBtn">Back</string>
+    <string name="history_search">History - Search</string>
 </resources>

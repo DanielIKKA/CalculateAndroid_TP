@@ -315,7 +315,7 @@
         android:id="@+id/button_history_search"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="History - Search"
+        android:text="@string/history_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/option2"
         app:layout_constraintEnd_toEndOf="parent"
